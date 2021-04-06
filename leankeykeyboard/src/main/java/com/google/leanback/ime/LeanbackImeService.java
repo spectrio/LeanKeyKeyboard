@@ -245,16 +245,6 @@ public class LeanbackImeService extends InputMethodService {
         return false;
     }
 
-    /**
-     * At this point, decision whether to show kbd taking place
-     * @return whether to show kbd
-     */
-    @SuppressLint("MissingSuperCall")
-    @Override
-    public boolean onEvaluateInputViewShown() {
-        return mKeyboardController.showInputView();
-    }
-
     @Override
     public void onFinishInputView(boolean finishingInput) {
         super.onFinishInputView(finishingInput);
