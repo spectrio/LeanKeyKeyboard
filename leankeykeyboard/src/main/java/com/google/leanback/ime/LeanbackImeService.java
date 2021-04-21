@@ -165,9 +165,7 @@ public class LeanbackImeService extends InputMethodService {
                 case InputListener.ENTRY_TYPE_ACTION:  // NOTE: user presses Go, Send, Search etc
                     boolean result = sendDefaultEditorAction(true);
 
-                    if (result) {
-                        hideWindow(); // NOTE: SmartYouTubeTV hide kbd on search page fix
-                    } else {
+                    if (!result) {
                         sendEnterKey(connection);
                     }
 
@@ -343,10 +341,6 @@ public class LeanbackImeService extends InputMethodService {
         // FireTV: fix accidental kbd pop-ups
         // more info: https://forum.xda-developers.com/fire-tv/general/guide-change-screen-keyboard-to-leankey-t3527675/page2
         updateInputViewShown();
-        if (!mKeyboardController.showInputView()) {
-            onHideIme();
-            return;
-        }
 
         mKeyboardController.onStartInputView();
         sendBroadcast(new Intent(IME_OPEN));
